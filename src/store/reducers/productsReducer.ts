@@ -22,7 +22,6 @@ const reducer = (
             return { data: [], loading: true, error: null };
         case EPActionsTypes.FETCH_PRODUCTS_SUCCESS:
             return { data: action.payload, loading: false, error: null };
-            break;
         case EPActionsTypes.FETCH_PRODUCTS_ERROR:
             return { data: [], loading: false, error: action.payload };
         case EPActionsTypes.FETCH_PRODUCTS_SEARCH:

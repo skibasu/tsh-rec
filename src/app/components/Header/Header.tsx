@@ -1,11 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { AppRoute } from "routing/AppRoute.enum";
+import PageLogo from "../PageLogo/PageLogo";
+import SearchForm from "../SearchForm/SearchForm";
+import CurrentUser from "../CurrentUser/CurrentUser";
 
 const Header: React.FC = () => {
     return (
         <header>
-            <Link to={AppRoute.login}> Login </Link>
+            <PageLogo />
+            <SearchForm />
+            <CurrentUser />
         </header>
     );
 };
