@@ -6,3 +6,6 @@ export enum EPActionsTypes {
     FETCH_PRODUCTS_SEARCH = "FETCH_PRODUCTS_SEARCH",
     FETCH_PRODUCTS_SEARCH_ERROR = "FETCH_PRODUCTS_SEARCH_ERROR",
 }
+export enum EQActionsTypes {
+    SET_QUERY = "SET_QUERY",
+}

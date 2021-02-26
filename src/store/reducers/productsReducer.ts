@@ -1,16 +1,32 @@
 import { TAction } from "../actions/index";
 import { EPActionsTypes } from "../action-types";
-import { IProduct } from "../../app-models/app.models";
 
 export interface IProductState {
-    data: IProduct[];
+    data: any;
     loading: boolean;
     error: string | null;
+    firstLoad: boolean;
 }
 const initialState = {
-    data: [],
+    data: {
+        items: [],
+        links: {
+            first: "",
+            last: "",
+            next: "",
+            previous: "",
+        },
+        meta: {
+            totalItems: 0,
+            itemCount: 0,
+            itemsPerPage: 0,
+            totalPages: 0,
+            currentPage: 0,
+        },
+    },
     loading: false,
     error: null,
+    firstLoad: false,
 };
 
 const reducer = (
@@ -19,13 +35,33 @@ const reducer = (
 ): IProductState => {
     switch (action.type) {
         case EPActionsTypes.FETCH_PRODUCTS_INIT:
-            return { data: [], loading: true, error: null };
+            return {
+                data: initialState,
+                loading: true,
+                error: null,
+                firstLoad: false,
+            };
         case EPActionsTypes.FETCH_PRODUCTS_SUCCESS:
-            return { data: action.payload, loading: false, error: null };
+            return {
+                data: action.payload,
+                loading: false,
+                error: null,
+                firstLoad: true,
+            };
         case EPActionsTypes.FETCH_PRODUCTS_ERROR:
-            return { data: [], loading: false, error: action.payload };
+            return {
+                data: initialState,
+                loading: false,
+                error: action.payload,
+                firstLoad: false,
+            };
         case EPActionsTypes.FETCH_PRODUCTS_SEARCH:
-            return { data: [], loading: false, error: null };
+            return {
+                data: initialState,
+                loading: false,
+                error: null,
+                firstLoad: true,
+            };
         default:
             return state;
     }

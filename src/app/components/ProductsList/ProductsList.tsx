@@ -1,34 +1,74 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { useActions } from "../../../hooks/useAction";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { Grid, Box } from "@material-ui/core";
+
+import {
+    createStyles,
+    makeStyles,
+    useTheme,
+    Theme,
+} from "@material-ui/core/styles";
 import Product from "./Product/Product";
+import MyContainer from "../Container/Container";
 
-const ProductsList: React.FC = () => {
-    const { fetchProducts } = useActions();
-    //  TODO
-    const state = useSelector((state: any) => state);
-    const { items: data } = state.products.data;
-    const { error, loading } = state.products;
+const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        root: {
+            padding: "24px 0 20px",
+            [theme.breakpoints.up("lg")]: {
+                padding: "55px 0 20px",
+            },
+        },
+        column: {
+            marginBottom: "12px",
+            [theme.breakpoints.up("lg")]: {
+                marginBottom: "8px",
+            },
+        },
+        modal: {
+            width: 600,
+            height: 530,
+        },
+        paper: {
+            backgroundColor: theme.palette.background.paper,
+            border: "2px solid #000",
+            boxShadow: theme.shadows[5],
+            padding: theme.spacing(2, 4, 3),
+        },
+    })
+);
 
-    useEffect(() => {
-        fetchProducts("?limit=8&page=1");
-    }, []);
+const ProductsList: React.FC<any> = ({ data }) => {
+    const classes = useStyles();
+    const theme = useTheme();
+
+    const matches = useMediaQuery(theme.breakpoints.up("md"));
+
     return (
-        <div className="root">
+        <Box className={classes.root}>
             <div className="body">
-                {error && <h3>{error}</h3>}
-                {loading && <h3>Loading ...</h3>}
-                {!error &&
-                    !loading &&
-                    data &&
-                    data.map((value: any) => (
-                        <Product key={value.id} {...value} />
-                    ))}
-                {!error && !loading && data && !data.length && (
-                    <h2>Nic nie znaleziono</h2>
-                )}
+                <MyContainer>
+                    <>
+                        <Grid container spacing={matches ? 2 : 1}>
+                            {data.map((value: any) => (
+                                <Grid
+                                    key={value.id}
+                                    item
+                                    xs={12}
+                                    sm={6}
+                                    md={4}
+                                    xl={3}
+                                    className={classes.column}
+                                >
+                                    <Product {...value} />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    </>
+                </MyContainer>
             </div>
-        </div>
+        </Box>
     );
 };
 export default ProductsList;

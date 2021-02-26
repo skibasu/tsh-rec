@@ -13,7 +13,6 @@ export const fetchProducts = (query: string | null = null) => async (
         const { data: payload } = await axios.get(
             `https://join-tsh-api-staging.herokuapp.com/products${query}`
         );
-        console.log(payload);
         dispatch({
             type: EPActionsTypes.FETCH_PRODUCTS_SUCCESS,
             payload,

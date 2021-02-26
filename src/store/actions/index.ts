@@ -1,4 +1,4 @@
-import { EPActionsTypes } from "../action-types/index";
+import { EPActionsTypes, EQActionsTypes } from "../action-types/index";
 import { IProduct } from "../../app-models/app.models";
 /**  IFetchInit - initation response object interface */
 export interface IFetchInit {
@@ -27,11 +27,15 @@ export interface IFetchSearchError {
     type: EPActionsTypes.FETCH_PRODUCTS_SEARCH_ERROR;
     payload: string | null;
 }
-
+export interface ISetQuery {
+    type: EQActionsTypes.SET_QUERY;
+    payload: string;
+}
 /**  TAction - all products actions types */
 export type TAction =
     | IFetchInit
     | IFetchSuccess
     | IFetchError
     | IFetchSearch
-    | IFetchSearchError;
+    | IFetchSearchError
+    | ISetQuery;

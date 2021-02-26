@@ -9,9 +9,9 @@ import { AppRoute } from "./AppRoute.enum";
 export const AppRoutes = () => {
     return (
         <Switch>
-            <Route path={AppRoute.home} exact component={Products} />
-            <Route path={AppRoute.login} component={Login} />
-            <Redirect to={AppRoute.home} />
+            <Route path={AppRoute.HOME} exact component={Products} />
+            <Route path={AppRoute.LOGIN} component={Login} />
+            <Redirect to={AppRoute.HOME} />
         </Switch>
     );
 };

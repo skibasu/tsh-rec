@@ -1,5 +1,10 @@
 //export * as ProductsModels from "./products.models";
 
 export interface IProduct {
-    [key: string]: string | undefined;
+    image: string;
+    promo: boolean;
+    name: string;
+    description: string;
+    rating: number;
+    active: boolean;
 }
