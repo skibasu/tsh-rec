@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme: Theme) =>
 
             display: "flex",
             flexDirection: "column",
-            backgroundColor: "#fff",
+            backgroundColor: "theme.palette.white.main",
             borderRadius: 8,
         },
         mediaProduct: {

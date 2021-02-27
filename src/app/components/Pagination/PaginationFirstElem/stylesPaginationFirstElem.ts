@@ -12,10 +12,10 @@ export const useStyles = makeStyles((theme: Theme) =>
             textTransform: "none",
             display: "inline-flex",
             textDecoration: "none",
-            color: "#1A1B1D",
+            color: theme.palette.textColor.main,
             fontWeight: 600,
             padding: 6,
-            fontSize: "14px",
+            fontSize: 14,
             lineHeight: 1,
             "&:first-child": {
                 marginLeft: 5,

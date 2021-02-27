@@ -20,7 +20,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             width: "87%",
             minHeight: 570,
             maxWidth: 600,
-            background: "#FFFFFF",
+            background: theme.palette.white.main,
             boxShadow: "0px 8px 32px rgba(17, 18, 20, 0.158514)",
             borderRadius: 8,
             outline: "none",

@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         root: {
             position: "relative",
-            backgroundColor: "#f2f2f2",
+            backgroundColor: theme.palette.white.dark,
             flexGrow: 1,
         },
     })

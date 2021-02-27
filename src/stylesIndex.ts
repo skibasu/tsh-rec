@@ -19,6 +19,14 @@ declare module "@material-ui/core/styles/createPalette" {
         textColor: PaletteOptions["primary"];
     }
 }
+declare module "@material-ui/core/styles/createPalette" {
+    interface Palette {
+        white: Palette["primary"];
+    }
+    interface PaletteOptions {
+        white: PaletteOptions["primary"];
+    }
+}
 export const blue = {
     main: "#4460f7",
     dark: "#2140e8",
@@ -32,6 +40,10 @@ export const text = {
     light: "#9194A5",
     main: "#1A1B1D",
     dark: "#000000",
+};
+export const white = {
+    main: "#ffffff",
+    dark: "#f2f2f2",
 };
 export const fontFamily = "Nunito, sans-serif";
 export const fontSize = 18;
@@ -78,6 +90,7 @@ export const theme = createMuiTheme({
         },
 
         textColor: text,
+        white,
     },
 
     typography: {

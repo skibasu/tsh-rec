@@ -6,14 +6,19 @@ import { Typography, Box, Button, InputBase } from "@material-ui/core";
 import PageLogo from "../../components/PageLogo/PageLogo";
 import { useStyles } from "./stylesLogin";
 interface IAuth {
-    login: string | null;
+    isLogin: boolean;
+    username: string | null;
     password: string | null;
 }
 
 export const Login = () => {
     const classes = useStyles();
     const history = useHistory();
-    const [state, setState] = useState<IAuth>({ login: "", password: "" });
+    const [state, setState] = useState<IAuth>({
+        isLogin: false,
+        username: "",
+        password: "",
+    });
 
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
@@ -21,6 +26,7 @@ export const Login = () => {
     };
     const onLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
+        setState((state) => ({ ...state, isLogin: true }));
         history.push(AppRoute.HOME);
     };
     return (
@@ -47,7 +53,7 @@ export const Login = () => {
                                     <InputBase
                                         className={classes.input}
                                         placeholder="Enter username"
-                                        value={state.login}
+                                        value={state.username}
                                         fullWidth={true}
                                         onChange={onChangeValue}
                                         type="text"
@@ -86,9 +92,9 @@ export const Login = () => {
                                 >
                                     Log in
                                 </Button>
-                                <a href="#" className={classes.link}>
+                                <Button className={classes.link}>
                                     Forgot password?
-                                </a>
+                                </Button>
                             </form>
                         </Box>
                     </Box>

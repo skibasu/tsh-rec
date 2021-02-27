@@ -4,6 +4,7 @@ import { Grid, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import Product from "./Product/Product";
 import MyContainer from "../Container/Container";
+import { useSpring, animated } from "react-spring";
 import { useStyles } from "./stylesProductList";
 
 const ProductsList: React.FC<any> = ({ data }) => {
@@ -11,7 +12,15 @@ const ProductsList: React.FC<any> = ({ data }) => {
     const theme = useTheme();
 
     const matches = useMediaQuery(theme.breakpoints.up("md"));
+    const AnimatedBox = animated(Grid);
+    const animation = useSpring({
+        from: { opacity: 0 },
 
+        to: { opacity: 1 },
+        config: {
+            duration: 800,
+        },
+    });
     return (
         <Box className={classes.rootList}>
             <div className="body">
@@ -19,7 +28,8 @@ const ProductsList: React.FC<any> = ({ data }) => {
                     <>
                         <Grid container spacing={matches ? 2 : 1}>
                             {data.map((value: any) => (
-                                <Grid
+                                <AnimatedBox
+                                    style={animation}
                                     key={value.id}
                                     item
                                     xs={12}
@@ -29,7 +39,7 @@ const ProductsList: React.FC<any> = ({ data }) => {
                                     className={classes.columnList}
                                 >
                                     <Product {...value} />
-                                </Grid>
+                                </AnimatedBox>
                             ))}
                         </Grid>
                     </>

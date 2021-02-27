@@ -67,7 +67,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             width: 24,
             height: 24,
 
-            background: "#FFFFFF",
+            background: theme.palette.white.main,
             border: "1px solid #E0E2EA",
             "input:hover ~ &": {
                 backgroundColor: "#ebf1f5",

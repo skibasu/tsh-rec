@@ -12,7 +12,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             fontWeight: 600,
             fontSize: "14px",
             lineHeight: 1,
-            color: "#1A1B1D",
+            color: theme.palette.textColor.main,
             textDecoration: "none",
             padding: 6,
             height: "auto",

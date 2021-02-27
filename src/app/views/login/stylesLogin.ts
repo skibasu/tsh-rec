@@ -95,13 +95,20 @@ export const useStyles = makeStyles((theme: Theme) =>
             height: 48,
         },
         link: {
+            transition: "all .2s easy",
+            minWidth: "unset",
+            height: "auto",
+            display: "inline",
+            textTransform: "none",
+            padding: 0,
             position: "relative",
             fontWeight: 600,
             fontSize: 14,
             lineHeight: "16px",
-            color: "theme.palette.textColor.light",
+            color: theme.palette.textColor.light,
             textDecoration: "none",
             "&::after": {
+                transition: "all .2s easy",
                 content: '""',
                 display: "block",
                 position: "absolute",
@@ -109,7 +116,14 @@ export const useStyles = makeStyles((theme: Theme) =>
                 height: "1px",
                 left: 0,
                 bottom: 1,
-                backgroundColor: "theme.palette.textColor.light",
+                backgroundColor: theme.palette.textColor.light,
+            },
+            "&:hover": {
+                color: theme.palette.primary.dark,
+                backgroundColor: "transparent !important",
+            },
+            "&:hover:after": {
+                backgroundColor: theme.palette.primary.dark,
             },
         },
     })

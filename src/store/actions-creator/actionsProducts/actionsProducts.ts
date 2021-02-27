@@ -1,15 +1,11 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { EPActionsTypes } from "../../action-types";
-import { TAction } from "../../actions/index";
+import { TAction, IQueryParams } from "../../actions/index";
 
-export const fetchProducts = (params: {
-    search?: string | null | undefined;
-    active?: string | null | undefined | boolean;
-    promo?: string | null | undefined | boolean;
-    limit?: number | null | undefined | boolean;
-    page?: number;
-}) => async (dispatch: Dispatch<TAction>) => {
+export const fetchProducts = (params: IQueryParams) => async (
+    dispatch: Dispatch<TAction>
+) => {
     dispatch({
         type: EPActionsTypes.FETCH_PRODUCTS_INIT,
     });

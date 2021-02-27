@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme: Theme) =>
         body: {
             maxWidth: 600,
             minHeight: 344,
-            background: "#FFFFFF",
+            background: theme.palette.white.main,
             borderRadius: 8,
             display: "flex",
             justifyContent: "center",
@@ -36,7 +36,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             fontWeight: 600,
             fontSize: 16,
             lineHeight: "16px",
-            color: "red",
+            color: theme.palette.secondary.dark,
         },
     })
 );
