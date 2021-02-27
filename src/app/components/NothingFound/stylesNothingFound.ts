@@ -34,7 +34,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             fontWeight: 600,
             fontSize: 14,
             lineHeight: "16px",
-            color: "#9194A5",
+            color: theme.palette.textColor.main,
         },
     })
 );

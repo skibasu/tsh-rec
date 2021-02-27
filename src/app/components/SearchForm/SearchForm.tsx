@@ -12,18 +12,11 @@ import { ReactComponent as SearchIcon } from "../Icons/search.svg";
 import { useStyles } from "./stylesSearchForm";
 
 interface IQuery {
-    search: string;
-    active: string | boolean;
-    promo: string | boolean;
+    search: string | null | undefined;
+    active: string | boolean | undefined;
+    promo: string | boolean | undefined;
+    limit?: number | null | undefined | boolean;
 }
-enum ECheckBox {
-    ACTIVE = "&active=",
-    PROMO = "&promo=",
-    SEARCH = "?search=",
-    LIMIT = "&limit=8",
-    PAGE = "&page=",
-}
-
 const SearchForm: React.FC = () => {
     const classes = useStyles();
     const { fetchProducts, setQuery } = useActions();
@@ -38,35 +31,22 @@ const SearchForm: React.FC = () => {
 
         setState((state) => ({
             ...state,
-            [name]: currentValue || "",
+            [name]: currentValue || null,
         }));
     };
     const onSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         (search || promo || active) &&
-            fetchProducts(
-                ECheckBox.SEARCH +
-                    search +
-                    ECheckBox.LIMIT +
-                    ECheckBox.PROMO +
-                    promo +
-                    ECheckBox.ACTIVE +
-                    active +
-                    ECheckBox.PAGE +
-                    "1"
-            );
+            fetchProducts({
+                search,
+                active,
+                promo,
+                limit: 8,
+                page: 1,
+            });
 
         (search || promo || active) &&
-            setQuery(
-                ECheckBox.SEARCH +
-                    search +
-                    ECheckBox.LIMIT +
-                    ECheckBox.PROMO +
-                    promo +
-                    ECheckBox.ACTIVE +
-                    active +
-                    ECheckBox.PAGE
-            );
+            setQuery({ search, active, promo, limit: 8 });
     };
     return (
         <Box className={classes.root}>

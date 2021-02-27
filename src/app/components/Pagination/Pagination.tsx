@@ -18,11 +18,11 @@ const Pagination: React.FC = () => {
         page: number
     ) => {
         e.preventDefault();
-        page !== meta.currentPage && fetchProducts(state.query.query + page);
+        page !== meta.currentPage &&
+            fetchProducts({ ...state.query, page: page, limit: 8 });
     };
 
     const createPaginationPoints = (num: number) => {
-        console.log("pagination init");
         const arr = [];
         for (let i = 1; i <= num; i++) {
             arr.push(i);
@@ -41,15 +41,20 @@ const Pagination: React.FC = () => {
             let start = 0;
             if (meta && meta.currentPage) {
                 if (meta.currentPage < 1) {
+                    console.log(1);
                     start = meta.currentPage - 1;
                 } else if (
                     meta.currentPage > 1 &&
                     meta.currentPage < arr.length - 3
                 ) {
+                    console.log(2);
                     start = meta.currentPage - 2;
                 } else if (meta.currentPage > arr.length - 3) {
+                    console.log(3);
+                    console.log(arr.length);
                     start = meta.currentPage - 8;
                 } else if (meta.currentPage === arr.length - 3) {
+                    console.log(4);
                     start = arr.length - 6;
                 }
             }

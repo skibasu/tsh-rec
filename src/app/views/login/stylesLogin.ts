@@ -99,7 +99,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             fontWeight: 600,
             fontSize: 14,
             lineHeight: "16px",
-            color: "#9194A5",
+            color: "theme.palette.textColor.light",
             textDecoration: "none",
             "&::after": {
                 content: '""',
@@ -109,7 +109,7 @@ export const useStyles = makeStyles((theme: Theme) =>
                 height: "1px",
                 left: 0,
                 bottom: 1,
-                backgroundColor: "#9194A5",
+                backgroundColor: "theme.palette.textColor.light",
             },
         },
     })

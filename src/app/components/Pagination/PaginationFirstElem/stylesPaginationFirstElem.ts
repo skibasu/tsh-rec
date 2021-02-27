@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme: Theme) =>
                 [theme.breakpoints.up("lg")]: { marginRight: 15 },
             },
             "&:disabled": {
-                color: "#9194A5",
+                color: theme.palette.textColor.main,
             },
         },
     })

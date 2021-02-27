@@ -2,10 +2,13 @@ import { TAction } from "../actions/index";
 import { EQActionsTypes } from "../action-types/index";
 
 interface IQueryState {
-    query: string;
+    search?: string | null | undefined;
+    active?: string | boolean | undefined;
+    promo?: string | boolean | undefined;
+    limit?: number | null | undefined | boolean;
 }
 const initialState = {
-    query: "?limit=8&page=",
+    limit: 8,
 };
 
 const reducer = (
@@ -14,7 +17,7 @@ const reducer = (
 ): IQueryState => {
     switch (action.type) {
         case EQActionsTypes.SET_QUERY:
-            return { query: action.payload };
+            return action.payload;
         default:
             return state;
     }

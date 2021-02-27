@@ -27,9 +27,16 @@ export interface IFetchSearchError {
     type: EPActionsTypes.FETCH_PRODUCTS_SEARCH_ERROR;
     payload: string | null;
 }
+interface IP {
+    search?: string | null | undefined;
+    active?: string | boolean | undefined;
+    promo?: string | boolean | undefined;
+    limit?: number | null | undefined | boolean;
+    page?: number | null;
+}
 export interface ISetQuery {
     type: EQActionsTypes.SET_QUERY;
-    payload: string;
+    payload: IP;
 }
 /**  TAction - all products actions types */
 export type TAction =

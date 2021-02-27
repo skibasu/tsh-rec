@@ -24,8 +24,8 @@ export const Products: React.FC = () => {
 
     useEffect(() => {
         window.innerWidth >= 768
-            ? fetchProducts("?limit=8&page=1")
-            : fetchProducts("?limit=4&page=1");
+            ? fetchProducts({ page: 1, limit: 8 })
+            : fetchProducts({ page: 1, limit: 4 });
     }, []);
     const state = useSelector((state: any) => state);
     const { items: data } = state.products.data;

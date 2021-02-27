@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme: Theme) =>
         root: {
             padding: "5px 10px",
             backgroundColor: theme.palette.warning.main,
-            width: "75px",
+            width: 75,
             height: "24px",
             display: "flex",
             alignItems: "center",

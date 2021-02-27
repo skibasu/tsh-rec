@@ -67,7 +67,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             textTransform: "none",
             boxShadow: "none",
             "&:disabled": {
-                background: "#9194A5",
+                background: "theme.palette.textColor.light",
             },
         },
     })
