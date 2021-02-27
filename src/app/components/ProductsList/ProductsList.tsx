@@ -1,43 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Grid, Box } from "@material-ui/core";
-
-import {
-    createStyles,
-    makeStyles,
-    useTheme,
-    Theme,
-} from "@material-ui/core/styles";
+import { useTheme } from "@material-ui/core/styles";
 import Product from "./Product/Product";
 import MyContainer from "../Container/Container";
-
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            padding: "24px 0 20px",
-            [theme.breakpoints.up("lg")]: {
-                padding: "55px 0 20px",
-            },
-        },
-        column: {
-            marginBottom: "12px",
-            [theme.breakpoints.up("lg")]: {
-                marginBottom: "8px",
-            },
-        },
-        modal: {
-            width: 600,
-            height: 530,
-        },
-        paper: {
-            backgroundColor: theme.palette.background.paper,
-            border: "2px solid #000",
-            boxShadow: theme.shadows[5],
-            padding: theme.spacing(2, 4, 3),
-        },
-    })
-);
+import { useStyles } from "./stylesProductList";
 
 const ProductsList: React.FC<any> = ({ data }) => {
     const classes = useStyles();
@@ -46,7 +13,7 @@ const ProductsList: React.FC<any> = ({ data }) => {
     const matches = useMediaQuery(theme.breakpoints.up("md"));
 
     return (
-        <Box className={classes.root}>
+        <Box className={classes.rootList}>
             <div className="body">
                 <MyContainer>
                     <>
@@ -59,7 +26,7 @@ const ProductsList: React.FC<any> = ({ data }) => {
                                     sm={6}
                                     md={4}
                                     xl={3}
-                                    className={classes.column}
+                                    className={classes.columnList}
                                 >
                                     <Product {...value} />
                                 </Grid>

@@ -21,8 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
 export const Products: React.FC = () => {
     const classes = useStyles();
     const { fetchProducts } = useActions();
+
     useEffect(() => {
-        fetchProducts("?limit=8&page=1");
+        window.innerWidth >= 768
+            ? fetchProducts("?limit=8&page=1")
+            : fetchProducts("?limit=4&page=1");
     }, []);
     const state = useSelector((state: any) => state);
     const { items: data } = state.products.data;
@@ -32,9 +35,15 @@ export const Products: React.FC = () => {
         <>
             <Header />
             <main className={classes.root}>
+                {/* if is loading show spinner */}
                 {loading && <Spinner />}
+                {/* if is a problem with networ  show error */}
                 {error && <Error error={error} />}
-                {!error && !loading && data && <ProductsList data={data} />}
+                {/* if isn't error and data has been loaded show Products page */}
+                {!error && !loading && data && data.length && (
+                    <ProductsList data={data} />
+                )}
+                {/* if isn't error and data has been loaded is empty and this is not firs fetch show NothingFound Page. It can happend on serch */}
                 {!error && !loading && data && !data.length && firstLoad && (
                     <NothingFound />
                 )}
