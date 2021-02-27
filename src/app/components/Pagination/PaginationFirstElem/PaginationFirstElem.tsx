@@ -1,11 +1,11 @@
 import React from "react";
-import clsx from "clsx";
-import { useStyles } from "./styles";
+import { Button } from "@material-ui/core";
+import { useStyles } from "./stylesPaginationFirstElem";
 
 interface IProps {
     currentPage: number;
     onPaginate: (
-        e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
         page: number
     ) => void;
 }
@@ -17,17 +17,13 @@ const MyPaginationFirstElem: React.FC<IProps> = ({
     const classes = useStyles();
     return (
         <li className={classes.elem}>
-            <a
-                href="#"
-                className={
-                    currentPage === 1
-                        ? clsx(classes.button, classes.notActive)
-                        : classes.button
-                }
+            <Button
+                disabled={currentPage === 1}
+                className={classes.button}
                 onClick={(e) => onPaginate(e, 1)}
             >
                 First
-            </a>
+            </Button>
         </li>
     );
 };

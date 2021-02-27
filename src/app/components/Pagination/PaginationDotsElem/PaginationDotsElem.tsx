@@ -1,5 +1,5 @@
 import React from "react";
-import { useStyles } from "./styles";
+import { useStyles } from "./stylesPaginationDotsElem";
 
 interface IProps {
     value: number;
@@ -8,9 +8,9 @@ interface IProps {
 const MyPaginationDotsElem: React.FC<IProps> = ({ value }) => {
     const classes = useStyles();
     return (
-        <li key={value + "dots"} className={classes.elemDot}>
+        <span key={value + "dots"} className={classes.elemDot}>
             ...
-        </li>
+        </span>
     );
 };
 
