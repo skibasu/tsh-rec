@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         elem: {
-            margin: "0 2px",
+            margin: "0",
             display: "inline-flex",
         },
 
@@ -14,7 +14,7 @@ export const useStyles = makeStyles((theme: Theme) =>
             lineHeight: 1,
             color: theme.palette.textColor.main,
             textDecoration: "none",
-            padding: 6,
+            padding: 5,
             height: "auto",
             minWidth: "unset",
             [theme.breakpoints.up("lg")]: {

@@ -15,6 +15,9 @@ const useStyles = makeStyles((theme: Theme) =>
             position: "relative",
             backgroundColor: theme.palette.white.dark,
             flexGrow: 1,
+            [theme.breakpoints.up("lg")]: {
+                paddingTop: 145,
+            },
         },
     })
 );
@@ -23,9 +26,7 @@ export const Products: React.FC = () => {
     const { fetchProducts } = useActions();
 
     useEffect(() => {
-        window.innerWidth >= 768
-            ? fetchProducts({ page: 1, limit: 8 })
-            : fetchProducts({ page: 1, limit: 4 });
+        fetchProducts({ page: 1, limit: 8 });
     }, []);
     const state = useSelector((state: any) => state);
     const { items: data } = state.products.data;

@@ -2,8 +2,9 @@ import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         elem: {
-            margin: "0 2px",
+            margin: "0 20px 0 2px",
             display: "inline-flex",
+            [theme.breakpoints.up("lg")]: { margin: "0 2px" },
         },
 
         button: {
@@ -26,7 +27,7 @@ export const useStyles = makeStyles((theme: Theme) =>
                 [theme.breakpoints.up("lg")]: { marginRight: 15 },
             },
             "&:disabled": {
-                color: theme.palette.textColor.main,
+                color: theme.palette.textColor.light,
             },
         },
     })

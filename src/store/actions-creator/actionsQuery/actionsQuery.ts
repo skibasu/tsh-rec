@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import { EQActionsTypes } from "../../action-types";
-import { TAction, IQueryParams } from "../../actions/index";
+import { TAction } from "../../actions/index";
+import { IQueryParams } from "../../../app-models/app.models";
 
 export const setQuery = (query: IQueryParams) => (
     dispatch: Dispatch<TAction>

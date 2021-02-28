@@ -37,7 +37,7 @@ export const useStyles = makeStyles((theme: Theme) =>
                 padding: "50px 24px 50px 24px",
             },
             [theme.breakpoints.up("xl")]: {
-                padding: "62px 40px 79px 128px",
+                padding: "62px 40px 88px 128px",
             },
         },
         rowY: {

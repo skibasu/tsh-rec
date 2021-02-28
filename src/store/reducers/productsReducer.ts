@@ -1,6 +1,16 @@
 import { TAction } from "../actions/index";
 import { EPActionsTypes } from "../action-types";
 
+export interface IItems {
+    [key: string]: string | number | boolean | null;
+}
+export interface ILinks {
+    [key: string]: string | number;
+}
+export interface IData {
+    items: IItems[];
+    links: ILinks;
+}
 export interface IProductState {
     data: any;
     loading: boolean;
@@ -55,13 +65,7 @@ const reducer = (
                 error: action.payload,
                 firstLoad: false,
             };
-        case EPActionsTypes.FETCH_PRODUCTS_SEARCH:
-            return {
-                data: initialState,
-                loading: false,
-                error: null,
-                firstLoad: true,
-            };
+
         default:
             return state;
     }

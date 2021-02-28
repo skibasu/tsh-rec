@@ -1,5 +1,6 @@
 import { EQActionsTypes } from "../action-types/index";
-import { TAction, IQueryParams } from "../actions/index";
+import { TAction } from "../actions/index";
+import { IQueryParams } from "../../app-models/app.models";
 
 const initialState = {
     limit: 8,

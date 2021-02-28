@@ -35,6 +35,8 @@ export const useStyles = makeStyles((theme: Theme) =>
         media1Modal: {
             height: 0,
             paddingTop: "109.3%",
+            borderBottomRightRadius: 8,
+            borderBottomLeftRadius: 8,
             [theme.breakpoints.up("lg")]: {
                 paddingTop: "59%",
             },

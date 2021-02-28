@@ -9,3 +9,6 @@ export enum EPActionsTypes {
 export enum EQActionsTypes {
     SET_QUERY = "SET_QUERY",
 }
+export enum EAActionsTypes {
+    LOG_IN = "LOG_IN",
+}

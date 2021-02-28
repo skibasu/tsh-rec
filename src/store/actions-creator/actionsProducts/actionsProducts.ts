@@ -1,7 +1,8 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { EPActionsTypes } from "../../action-types";
-import { TAction, IQueryParams } from "../../actions/index";
+import { TAction } from "../../actions/index";
+import { IQueryParams } from "../../../app-models/app.models";
 
 export const fetchProducts = (params: IQueryParams) => async (
     dispatch: Dispatch<TAction>

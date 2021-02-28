@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import OutsideClickHandler from "react-outside-click-handler";
+import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { AppRoute } from "routing/AppRoute.enum";
 import { Box, Avatar, Button } from "@material-ui/core";
@@ -10,7 +11,8 @@ import { useSpring, animated } from "react-spring";
 const CurrentUser: React.FC = () => {
     const classes = useStyles();
     const history = useHistory();
-    const isLogin = true;
+    const login = useSelector((state: any) => state);
+    const { isLogin } = login;
     const [popup, setPopUpVisible] = useState<boolean>(false);
     const onLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();

@@ -1,23 +1,25 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { useActions } from "../../../hooks/useAction";
+import { useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { AppRoute } from "routing/AppRoute.enum";
 import { useHistory } from "react-router-dom";
 import { Typography, Box, Button, InputBase } from "@material-ui/core";
 import PageLogo from "../../components/PageLogo/PageLogo";
 import { useStyles } from "./stylesLogin";
-interface IAuth {
-    isLogin: boolean;
-    username: string | null;
-    password: string | null;
-}
+import { ILoginData } from "app-models/app.models";
 
 export const Login = () => {
+    const s = useSelector((state: any) => state);
+
     const classes = useStyles();
     const history = useHistory();
-    const [state, setState] = useState<IAuth>({
-        isLogin: false,
+    const { setLogIn } = useActions();
+    const [state, setState] = useState<ILoginData>({
         username: "",
         password: "",
+        isLogin: true,
     });
 
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,8 +28,8 @@ export const Login = () => {
     };
     const onLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
-        setState((state) => ({ ...state, isLogin: true }));
-        history.push(AppRoute.HOME);
+        setLogIn(state);
+        console.log("login ", s.login.isLogin);
     };
     return (
         <>
@@ -57,7 +59,7 @@ export const Login = () => {
                                         fullWidth={true}
                                         onChange={onChangeValue}
                                         type="text"
-                                        name="login"
+                                        name="username"
                                     />
                                 </Box>
                                 <Box
@@ -100,6 +102,7 @@ export const Login = () => {
                     </Box>
                 </Box>
             </Box>
+            {false && <Redirect to={AppRoute.LOGIN} />}
         </>
     );
 };

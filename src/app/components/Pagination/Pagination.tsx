@@ -18,6 +18,7 @@ const Pagination: React.FC = () => {
         page: number
     ) => {
         e.preventDefault();
+
         page !== meta.currentPage &&
             fetchProducts({ ...state.query, page: page, limit: 8 });
     };
@@ -27,7 +28,7 @@ const Pagination: React.FC = () => {
         for (let i = 1; i <= num; i++) {
             arr.push(i);
         }
-        console.log(arr);
+
         if (arr.length <= 6) {
             return arr.map((v, i) => (
                 <MyPaginationElem
@@ -52,7 +53,7 @@ const Pagination: React.FC = () => {
                 } else if (meta.currentPage > arr.length - 3) {
                     console.log(3);
                     console.log(arr.length);
-                    start = meta.currentPage - 8;
+                    start = meta.currentPage - 8 > 0 ? meta.currentPage - 8 : 0;
                 } else if (meta.currentPage === arr.length - 3) {
                     console.log(4);
                     start = arr.length - 6;
