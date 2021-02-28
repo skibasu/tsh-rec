@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useActions } from "../../../hooks/useAction";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
@@ -32,6 +32,9 @@ export const Products: React.FC = () => {
     const { items: data } = state.products.data;
     const { error, loading, firstLoad } = state.products;
 
+    useEffect(() => {
+        console.log("Product View has rerended");
+    }, []);
     return (
         <>
             <Header />

@@ -5,7 +5,7 @@ import { ILoginData } from "../../app-models/app.models";
 const initialState = {
     username: "",
     password: "",
-    isLogin: false,
+    token: "",
 };
 
 const reducer = (
@@ -14,6 +14,8 @@ const reducer = (
 ): ILoginData => {
     switch (action.type) {
         case EAActionsTypes.LOG_IN:
+            return action.payload;
+        case EAActionsTypes.LOG_OUT:
             return action.payload;
         default:
             return state;

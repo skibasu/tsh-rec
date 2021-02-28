@@ -34,6 +34,10 @@ export interface ISetLogIn {
     type: EAActionsTypes.LOG_IN;
     payload: ILoginData;
 }
+export interface ISetLogOut {
+    type: EAActionsTypes.LOG_OUT;
+    payload: ILoginData;
+}
 
 /**  TAction - all products actions types */
 export type TAction =
@@ -41,4 +45,5 @@ export type TAction =
     | IFetchSuccess
     | IFetchError
     | ISetQuery
-    | ISetLogIn;
+    | ISetLogIn
+    | ISetLogOut;

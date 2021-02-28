@@ -26,5 +26,5 @@ export interface IProductState {
 export interface ILoginData {
     username: string;
     password?: string;
-    isLogin: boolean;
+    token: string;
 }

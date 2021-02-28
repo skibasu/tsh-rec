@@ -1,36 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useActions } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { AppRoute } from "routing/AppRoute.enum";
-import { useHistory } from "react-router-dom";
 import { Typography, Box, Button, InputBase } from "@material-ui/core";
 import PageLogo from "../../components/PageLogo/PageLogo";
 import { useStyles } from "./stylesLogin";
 import { ILoginData } from "app-models/app.models";
 
 export const Login = () => {
-    const s = useSelector((state: any) => state);
-
     const classes = useStyles();
-    const history = useHistory();
     const { setLogIn } = useActions();
+    const s = useSelector((state: any) => state);
     const [state, setState] = useState<ILoginData>({
         username: "",
         password: "",
-        isLogin: true,
+        token: "",
     });
 
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
         const target = e.target;
         setState((state) => ({ ...state, [target.name]: target.value }));
     };
-    const onLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const onLogin = async (
+        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+    ) => {
         e.preventDefault();
         setLogIn(state);
-        console.log("login ", s.login.isLogin);
     };
+    useEffect(() => {
+        console.log("Login View has rerended");
+    }, []);
     return (
         <>
             <Box className={classes.root}>
@@ -102,7 +103,7 @@ export const Login = () => {
                     </Box>
                 </Box>
             </Box>
-            {false && <Redirect to={AppRoute.LOGIN} />}
+            {s.login.token && <Redirect to={AppRoute.HOME} />}
         </>
     );
 };

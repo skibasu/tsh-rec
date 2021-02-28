@@ -11,4 +11,5 @@ export enum EQActionsTypes {
 }
 export enum EAActionsTypes {
     LOG_IN = "LOG_IN",
+    LOG_OUT = "LOG_OUT",
 }

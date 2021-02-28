@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Grid, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
@@ -11,7 +11,9 @@ const ProductsList: React.FC<any> = ({ data }) => {
     const theme = useTheme();
 
     const matches = useMediaQuery(theme.breakpoints.up("md"));
-
+    useEffect(() => {
+        console.log("ProductList View has rerended");
+    }, []);
     return (
         <Box className={classes.rootList}>
             <div className="body">
