@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useActions } from "../../../hooks/useAction";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { useSelector } from "react-redux";
@@ -26,15 +27,15 @@ export const Products: React.FC = () => {
     const { fetchProducts } = useActions();
 
     useEffect(() => {
-        fetchProducts({ page: 1, limit: 8 });
+        console.log(isMobileOnly);
+        !isMobileOnly
+            ? fetchProducts({ page: 1, limit: 8 })
+            : fetchProducts({ page: 1, limit: 4 });
     }, []);
     const state = useSelector((state: any) => state);
     const { items: data } = state.products.data;
     const { error, loading, firstLoad } = state.products;
 
-    useEffect(() => {
-        console.log("Product View has rerended");
-    }, []);
     return (
         <>
             <Header />
@@ -44,7 +45,7 @@ export const Products: React.FC = () => {
                 {/* if is a problem with networ  show error */}
                 {error && <Error error={error} />}
                 {/* if isn't error and data has been loaded show Products page */}
-                {!error && !loading && data && data.length && (
+                {!error && !loading && data && data.length > 0 && (
                     <ProductsList data={data} />
                 )}
                 {/* if isn't error and data has been loaded is empty and this is not firs fetch show NothingFound Page. It can happend on serch */}

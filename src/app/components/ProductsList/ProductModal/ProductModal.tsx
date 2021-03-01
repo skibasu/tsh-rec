@@ -4,14 +4,13 @@ import {
     CardContent,
     CardMedia,
     Typography,
-    Modal,
     Backdrop,
     Fade,
     IconButton,
 } from "@material-ui/core";
 import { ReactComponent as Close } from "../../Icons/close.svg";
 import { useStyles } from "./stylesProductModal";
-
+import Dialog from "@material-ui/core/Dialog";
 interface IProps {
     toggleModal: boolean;
     onModal: () => void;
@@ -29,9 +28,7 @@ const ProductModal: React.FC<IProps> = ({
 }) => {
     const classes = useStyles();
     return (
-        <Modal
-            aria-labelledby="product-modal"
-            aria-describedby="product-sample-modal"
+        <Dialog
             className={classes.modal}
             open={toggleModal}
             onClose={onModal}
@@ -43,6 +40,7 @@ const ProductModal: React.FC<IProps> = ({
             disableAutoFocus={true}
             disableEnforceFocus={true}
             disableRestoreFocus={true}
+            maxWidth={false}
         >
             <Fade in={toggleModal}>
                 <Card className={classes.paperModal}>
@@ -74,7 +72,7 @@ const ProductModal: React.FC<IProps> = ({
                     </IconButton>
                 </Card>
             </Fade>
-        </Modal>
+        </Dialog>
     );
 };
 

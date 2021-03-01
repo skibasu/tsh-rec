@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
+import { isMobileOnly } from "react-device-detect";
 import { useActions } from "../../../hooks/useAction";
 import {
     Checkbox,
@@ -12,10 +13,10 @@ import { ReactComponent as SearchIcon } from "../Icons/search.svg";
 import { useStyles } from "./stylesSearchForm";
 
 interface IQuery {
-    search: string | null | undefined;
-    active: string | boolean | undefined;
-    promo: string | boolean | undefined;
-    limit?: number | null | undefined | boolean;
+    search: string;
+    active: string | boolean;
+    promo: string | boolean;
+    limit?: number;
 }
 const SearchForm: React.FC = () => {
     const classes = useStyles();
@@ -31,12 +32,13 @@ const SearchForm: React.FC = () => {
 
         setState((state) => ({
             ...state,
-            [name]: currentValue || null,
+            [name]: currentValue || "",
         }));
     };
     const onSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
-        (search || promo || active) &&
+        !isMobileOnly &&
+            (search || promo || active) &&
             fetchProducts({
                 search,
                 active,
@@ -44,9 +46,22 @@ const SearchForm: React.FC = () => {
                 limit: 8,
                 page: 1,
             });
+        isMobileOnly &&
+            (search || promo || active) &&
+            fetchProducts({
+                search,
+                active,
+                promo,
+                limit: 4,
+                page: 1,
+            });
 
-        (search || promo || active) &&
+        !isMobileOnly &&
+            (search || promo || active) &&
             setQuery({ search, active, promo, limit: 8 });
+        isMobileOnly &&
+            (search || promo || active) &&
+            setQuery({ search, active, promo, limit: 4 });
     };
     return (
         <Box className={classes.root}>

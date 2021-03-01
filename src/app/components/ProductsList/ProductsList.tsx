@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { isMobileOnly } from "react-device-detect";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Grid, Box } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
@@ -6,14 +7,14 @@ import Product from "./Product/Product";
 import MyContainer from "../Container/Container";
 import { useStyles } from "./stylesProductList";
 
+interface IData {
+    [key: string]: string | number;
+}
 const ProductsList: React.FC<any> = ({ data }) => {
     const classes = useStyles();
     const theme = useTheme();
-
     const matches = useMediaQuery(theme.breakpoints.up("md"));
-    useEffect(() => {
-        console.log("ProductList View has rerended");
-    }, []);
+
     return (
         <Box className={classes.rootList}>
             <div className="body">
@@ -26,7 +27,7 @@ const ProductsList: React.FC<any> = ({ data }) => {
                                     item
                                     xs={12}
                                     sm={6}
-                                    md={4}
+                                    md={isMobileOnly ? 6 : 4}
                                     xl={3}
                                     className={classes.columnList}
                                 >

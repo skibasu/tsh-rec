@@ -1,4 +1,5 @@
 import React from "react";
+import { isMobileOnly } from "react-device-detect";
 import { useSelector } from "react-redux";
 import { useActions } from "../../../hooks/useAction";
 import MyPaginationElem from "./PaginationElem/PaginationElem";
@@ -19,8 +20,12 @@ const Pagination: React.FC = () => {
     ) => {
         e.preventDefault();
 
-        page !== meta.currentPage &&
+        !isMobileOnly &&
+            page !== meta.currentPage &&
             fetchProducts({ ...state.query, page: page, limit: 8 });
+        isMobileOnly &&
+            page !== meta.currentPage &&
+            fetchProducts({ ...state.query, page: page, limit: 4 });
     };
 
     const createPaginationPoints = (num: number) => {
@@ -42,20 +47,16 @@ const Pagination: React.FC = () => {
             let start = 0;
             if (meta && meta.currentPage) {
                 if (meta.currentPage < 1) {
-                    console.log(1);
                     start = meta.currentPage - 1;
                 } else if (
                     meta.currentPage > 1 &&
                     meta.currentPage < arr.length - 3
                 ) {
-                    console.log(2);
                     start = meta.currentPage - 2;
                 } else if (meta.currentPage > arr.length - 3) {
-                    console.log(3);
                     console.log(arr.length);
                     start = meta.currentPage - 8 > 0 ? meta.currentPage - 8 : 0;
                 } else if (meta.currentPage === arr.length - 3) {
-                    console.log(4);
                     start = arr.length - 6;
                 }
             }
@@ -74,6 +75,15 @@ const Pagination: React.FC = () => {
                         {mixedArray[0] + 5 <
                             mixedArray[mixedArray.length - 1] &&
                             i === 2 && <MyPaginationDotsElem value={v} />}
+                        {mixedArray[0] !== 1 &&
+                            mixedArray[2] ===
+                                mixedArray[mixedArray.length - 3] - 1 &&
+                            i === 0 && (
+                                <MyPaginationDotsElem
+                                    value={v}
+                                    style={{ order: "-1" }}
+                                />
+                            )}
                     </MyPaginationElem>
                 );
             });

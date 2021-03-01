@@ -1,26 +1,39 @@
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        // Styles for Moadal
-
         modal: {
+            maxWidth: "100%",
+            borderRadius: 8,
             background: "rgba(26, 27, 29, 0.9)",
             display: "flex",
-
             alignItems: "center",
             justifyContent: "center",
             outline: "none",
-
             overflow: "auto",
             height: "100%",
-            minHeight: 570,
+            "& .MuiPaper-rounded ": {
+                borderRadius: 10,
+                maxWidth: "100%",
+                [theme.breakpoints.down("md")]: {
+                    maxWidth: "100%",
+                },
+            },
+            "& .MuiDialog-paperWidthFals": {
+                [theme.breakpoints.down("md")]: {
+                    [theme.breakpoints.down("md")]: {
+                        maxWidth: "100%",
+                    },
+                },
+            },
+            "& .MuiDialog-paper": {
+                margin: 24,
+            },
         },
         paperModal: {
+            overflo: "hidden",
             position: "relative",
-            width: "87%",
             minHeight: 570,
             maxWidth: 600,
-            background: theme.palette.white.main,
             boxShadow: "0px 8px 32px rgba(17, 18, 20, 0.158514)",
             borderRadius: 8,
             outline: "none",

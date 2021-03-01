@@ -8,18 +8,16 @@ import {
     IQueryParams,
     ILoginData,
 } from "../../app-models/app.models";
-/**  IFetchInit - initation response object interface */
+
 export interface IFetchInit {
     type: EPActionsTypes.FETCH_PRODUCTS_INIT;
 }
 
-/**  IFetchSuccess  - success response object interface */
 export interface IFetchSuccess {
     type: EPActionsTypes.FETCH_PRODUCTS_SUCCESS;
     payload: IProduct[];
 }
 
-/**  IFetchSuccess  - error response object interface */
 export interface IFetchError {
     type: EPActionsTypes.FETCH_PRODUCTS_ERROR;
     payload: string | null;

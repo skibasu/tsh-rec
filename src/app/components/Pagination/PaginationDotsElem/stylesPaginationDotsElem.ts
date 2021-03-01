@@ -6,5 +6,8 @@ export const useStyles = makeStyles((theme: Theme) =>
             margin: "0 10px",
             display: "inline-flex",
         },
+        elemDotBefore: {
+            float: "left",
+        },
     })
 );

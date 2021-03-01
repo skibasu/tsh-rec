@@ -3,7 +3,7 @@ import clsx from "clsx";
 import OutsideClickHandler from "react-outside-click-handler";
 import { useSelector } from "react-redux";
 import { useActions } from "../../../hooks/useAction";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AppRoute } from "routing/AppRoute.enum";
 import { Box, Avatar, Button } from "@material-ui/core";
 import { useStyles } from "./stylesCurrentUser";

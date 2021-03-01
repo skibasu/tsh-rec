@@ -51,6 +51,9 @@ export const useStyles = makeStyles((theme: Theme) =>
             height: "48px",
             top: 0,
             right: 0,
+            "&:hover, &:active, &:focus": {
+                backgroundColor: "transparent",
+            },
         },
         checkbox: {
             marginRight: "35px",
