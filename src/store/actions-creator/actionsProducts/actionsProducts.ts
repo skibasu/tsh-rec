@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../../axios/index";
 import { Dispatch } from "redux";
 import { EPActionsTypes } from "../../action-types";
 import { TAction } from "../../actions/index";
@@ -11,12 +11,9 @@ export const fetchProducts = (params: IQueryParams) => async (
         type: EPActionsTypes.FETCH_PRODUCTS_INIT,
     });
     try {
-        const { data: payload } = await axios.get(
-            `https://join-tsh-api-staging.herokuapp.com/products`,
-            {
-                params: { ...params },
-            }
-        );
+        const { data: payload } = await axios.get("products", {
+            params: { ...params },
+        });
         dispatch({
             type: EPActionsTypes.FETCH_PRODUCTS_SUCCESS,
             payload,
