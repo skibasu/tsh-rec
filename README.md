@@ -1,7 +1,7 @@
 # Info
 
--   Ilość wyświetlanych postów na urządzeniach mobilnych ustawiona jest na 4 , na urządzeniach desktopowych 8 - tak jak sugerował to design.
--   Podczas aktywowania wersji responsive w DevTools w przeglarce Chrome aplikacja zachowuje się jak na urzadzeniu mobilnym.
--   Logowanie działa - zatwierdzenie formularza z dowlnymi danymi loguje.
+-   The number of posts displayed on mobile devices is set to 4, on desktop devices to 8 - just as the design suggested.
+-   When activating the responsive version in DevTools in a browser, the application behaves like on a mobile device.
+-   Dummy logging works - confirming the form with any data (can be empty) and press "Log in".
 
--   Brak testow :(
+-   Test are missing :(
