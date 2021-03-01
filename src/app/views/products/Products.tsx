@@ -27,7 +27,6 @@ export const Products: React.FC = () => {
     const { fetchProducts } = useActions();
 
     useEffect(() => {
-        console.log(isMobileOnly);
         !isMobileOnly
             ? fetchProducts({ page: 1, limit: 8 })
             : fetchProducts({ page: 1, limit: 4 });

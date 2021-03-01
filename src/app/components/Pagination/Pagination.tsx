@@ -54,7 +54,6 @@ const Pagination: React.FC = () => {
                 ) {
                     start = meta.currentPage - 2;
                 } else if (meta.currentPage > arr.length - 3) {
-                    console.log(arr.length);
                     start = meta.currentPage - 8 > 0 ? meta.currentPage - 8 : 0;
                 } else if (meta.currentPage === arr.length - 3) {
                     start = arr.length - 6;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PageLogo from "../PageLogo/PageLogo";
 import SearchForm from "../SearchForm/SearchForm";
 import CurrentUser from "../CurrentUser/CurrentUser";
@@ -8,9 +8,7 @@ import { useStyles } from "./stylesHeader";
 
 const Header: React.FC = () => {
     const classes = useStyles();
-    useEffect(() => {
-        console.log("Header  has rerended");
-    }, []);
+
     return (
         <header className={classes.header}>
             <MyContainer>

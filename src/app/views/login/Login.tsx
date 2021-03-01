@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { useActions } from "../../../hooks/useAction";
 import { useSelector } from "react-redux";
@@ -29,9 +29,7 @@ export const Login = () => {
         e.preventDefault();
         setLogIn(state);
     };
-    useEffect(() => {
-        console.log("Login View has rerended");
-    }, []);
+
     return (
         <>
             <Box className={classes.root}>
