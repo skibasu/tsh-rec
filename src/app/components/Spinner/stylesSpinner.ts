@@ -1,0 +1,17 @@
+import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+
+export const useStyles = makeStyles((theme: Theme) =>
+    createStyles({
+        spinner: {
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%, -50%)",
+            "& svg": {
+                display: "block",
+                width: 56,
+                height: 56,
+            },
+        },
+    })
+);
